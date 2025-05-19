@@ -14,6 +14,8 @@ A zeroMQ localhost is used to connect the programming requesting data to the loc
 
 - **UML Sequence Diagram**
 
+  Notes are provided as orange squares.  
+
 ![image](https://github.com/user-attachments/assets/5004591e-5762-43b0-a79d-3a98766ed554)
 
 
