@@ -1,7 +1,7 @@
 # Microservice A For Teammate - CSV File Sorter
 ## **How to Progmatically Request Data**
 
-A zeroMQ localhost is used to connect the programming requesting data to the localhost server. After a context and socket has been created, a json string containing the name of the column to sort the data by, the csv file path, and the sort order (asc for ascending or desc for descending) is sent to the server.  Please note: the name of the column must match the column name in the csv file and the path must use forward slashes.
+A zeroMQ localhost is used to connect the programming requesting data to the localhost server. After a context and socket has been created, a json string containing the name of the column to sort the data by, the csv file path, and the sort order (asc for ascending or desc for descending) is sent to the server.  Please note: the name of the column must match the column name in the csv file and the path must use forward slashes.  The default sort order is set to ascending if a sort order is not provided.
 
 ![image](https://github.com/user-attachments/assets/dbc8e368-f053-4bd9-86bf-4abba19326f8)
 
