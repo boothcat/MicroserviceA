@@ -6,7 +6,7 @@ A zeroMQ localhost is used to connect the programming requesting data to the loc
 ![image](https://github.com/user-attachments/assets/1e8854b6-5985-445a-9e95-222fa1202646)
 
 
-## **How to Programmatically Recieve Data**
+## **How to Programmatically Receive Data**
 
   Microservice A server returns a string containing the path to the sorted csv file.  The sorted csv file is created in the current working directory of the microservice program. The original csv file is unchanged by the microservice.
 
