@@ -9,13 +9,16 @@ context = zmq.Context()
 socket = context.socket(zmq.REP)
 socket.bind("tcp://*:5985")
 
+print("Microservice A server is listening for client requests...")
+
 # Get data from client
 while True:
-    print("Microservice A server is listening for client requests...") 
     data_json = socket.recv_json()
 
     # Convert back to python dictionary for processing
     movie_data = json.loads(data_json)
+
+    print(f"Microservice A received the following data from the client:\n{movie_data}\n")
 
     try:
         sort_column = movie_data["sort_column"]
@@ -24,7 +27,7 @@ while True:
         file_path = movie_data["path"].replace("\\", "/")
 
         # Default sort order is ascending
-        if movie_data["sort_order"].lower() == "desc" or movie_data["sort_order"].lower() == "descending":
+        if (movie_data["sort_order"].lower() == "desc" or movie_data["sort_order"].lower() == "descending"):
             sort_order = False
         else:
             sort_order = True
@@ -37,10 +40,10 @@ while True:
         sorted_file_path = os.getcwd().replace("\\", "/") + "/movie_vault_sorted.csv"
         movie_dataframe_sorted.to_csv(sorted_file_path, index=False)
 
+        print(f"Microservice A server is sending sorted csv file path back to the client:\n{sorted_file_path}\n")
         # Send sorted file path back to client
-        print("Microservice A recieved request and is sending back the sorted csv file path...")
         socket.send_string(sorted_file_path)
-    
+
     # Error Handling
     except FileNotFoundError as e:
         print(f"Error: Could not open csv file: {e}")
