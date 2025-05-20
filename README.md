@@ -16,6 +16,7 @@ A zeroMQ localhost is used to connect the programming requesting data to the loc
 
   The orange boxes in the UML Sequence Diagram below represent notes.
 
-![image](https://github.com/user-attachments/assets/5004591e-5762-43b0-a79d-3a98766ed554)
+![image](https://github.com/user-attachments/assets/fbd556f2-79b9-4703-95f0-40f089fe8ad7)
+
 
 
