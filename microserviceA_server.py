@@ -41,8 +41,8 @@ while True:
     
     # Error Handling
     except FileNotFoundError:
-        print(f"Error: Could not open csv file: {file_path}")
-        socket.send_string(f"Could not open csv file: {file_path}")
+        print("Error: Could not open csv file")
+        socket.send_string("Error: Could not open csv file")
     except KeyError:
-        print("Column not found in csv file")
+        print("Error: Column not found in csv file")
         socket.send_string("Error: Column not found in csv file")
