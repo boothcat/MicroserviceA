@@ -11,6 +11,7 @@ socket.bind("tcp://*:5985")
 
 # Get data from client
 while True:
+    print("Microservice A server is listening for client requests...") 
     data_json = socket.recv_json()
 
     # Convert back to python dictionary for processing
@@ -37,12 +38,16 @@ while True:
         movie_dataframe_sorted.to_csv(sorted_file_path, index=False)
 
         # Send sorted file path back to client
+        print("Microservice A recieved request and is sending back the sorted csv file path...")
         socket.send_string(sorted_file_path)
     
-    # Error Handling
-    except FileNotFoundError:
-        print("Error: Could not open csv file")
-        socket.send_string("Error: Could not open csv file")
-    except KeyError:
-        print("Error: Column not found in csv file")
-        socket.send_string("Error: Column not found in csv file")
+        # Error Handling
+        except FileNotFoundError as e:
+            print(f"Error: Could not open csv file: {e}")
+            socket.send_string("Could not open csv file")
+        except PermissionError as e:
+            print(f"Error: Unable to open file due to denied permission: {e}")
+            socket.send_string("Could not open csv file due to denied permission")
+        except KeyError as e:
+            print(f"Error Column not found in csv file: {e}")
+            socket.send_string("Error: Column not found in csv file")
